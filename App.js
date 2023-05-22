@@ -35,7 +35,6 @@ function HomeScreen() {
   const [buttonStatus5, setButtonStatus5] = useState();
   const [buttonStatus6, setButtonStatus6] = useState();
   const [buttonStatus7, setButtonStatus7] = useState();
-
   const dbRef = ref(getDatabase(dataRef));
   useEffect(() => {
     get(child(dbRef, `Relay`))

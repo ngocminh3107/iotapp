@@ -1,8 +1,10 @@
 {
   "expo": {
-    "name": "iotapp",
+    "name": "iot app",
     "slug": "iotapp",
-    "version": "1.0.0",
+    "privacy": "public",
+    "description": "App done",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -11,9 +13,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.dalbertlnminh.iotapp"
@@ -21,9 +21,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff",
-        "package": "com.yourcompany.yourappname",
-        "versionCode": 1
+        "backgroundColor": "#ffffff"
       },
       "package": "com.dalbertlnminh.iotapp"
     },
