@@ -324,7 +324,7 @@ export default function Information() {
                       marginTop: 10,
                     }}
                   >
-                    {Temp}
+                    {Light}
                   </Text>
                   <FontAwesome5
                     name="fantasy-flight-games"

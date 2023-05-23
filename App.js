@@ -6,6 +6,7 @@ import {
   set,
   onValue,
   update,
+  off
 } from "firebase/database";
 import { dataRef } from "./firebase";
 import {
@@ -17,7 +18,6 @@ import {
   ImageBackground,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
@@ -36,20 +36,54 @@ function HomeScreen() {
   const [buttonStatus6, setButtonStatus6] = useState();
   const [buttonStatus7, setButtonStatus7] = useState();
   const dbRef = ref(getDatabase(dataRef));
+
   useEffect(() => {
-    get(child(dbRef, `Relay`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const dataValue1 = snapshot.val().relay1.status;
-          setButtonStatus1(dataValue1);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const dbRef = ref(getDatabase());
+    const relayRef = child(dbRef, "autoControl");
+    const handleSnapshot = (snapshot) => {
+      if (snapshot.exists()) {
+        const dataValue7 = snapshot.val();
+        setButtonStatus7(dataValue7);
+      } else {
+        console.log("No data available");
+      }
+    };
+    const handleError = (error) => {
+      console.error(error);
+    };
+    onValue(relayRef, handleSnapshot, handleError);
+    return () => off(relayRef, "value", handleSnapshot);
   }, []);
+  console.log(buttonStatus6);
+
+  useEffect(() => {
+    const dbRef = ref(getDatabase());
+    const relayRef = child(dbRef, "Relay");
+    const handleSnapshot = (snapshot) => {
+      if (snapshot.exists()) {
+        const dataValue1 = snapshot.val().relay1.status;
+        const dataValue2 = snapshot.val().relay2.status;
+        const dataValue3 = snapshot.val().relay3.status;
+        const dataValue4 = snapshot.val().relay4.status;
+        const dataValue5 = snapshot.val().relay5.status;
+        const dataValue6 = snapshot.val().relay6.status;
+        setButtonStatus1(dataValue1);
+        setButtonStatus2(dataValue2);
+        setButtonStatus3(dataValue3);
+        setButtonStatus4(dataValue4);
+        setButtonStatus5(dataValue5);
+        setButtonStatus6(dataValue6);
+      } else {
+        console.log("No data available");
+      }
+    };
+    const handleError = (error) => {
+      console.error(error);
+    };
+    onValue(relayRef, handleSnapshot, handleError);
+    return () => off(relayRef, "value", handleSnapshot);
+  }, []);
+  console.log(buttonStatus1);
 
   const handleButtonPress1 = () => {
     const newButtonStatus = buttonStatus1 === 1 ? 0 : 1;
@@ -111,9 +145,9 @@ function HomeScreen() {
         console.error(error);
       });
   };
-  const handleButtonPress6 = () => {
-    const newButtonStatus = buttonStatus6 === 1 ? 0 : 1;
-    setButtonStatus6(newButtonStatus);
+  const handleButtonPress7 = () => {
+    const newButtonStatus = buttonStatus7 === 1 ? 0 : 1;
+    setButtonStatus7(newButtonStatus);
     // Update the data in Firebase
     set(child(dbRef, "autoControl"), newButtonStatus)
       .then(() => {
@@ -123,9 +157,9 @@ function HomeScreen() {
         console.error(error);
       });
   };
-  const handleButtonPress7 = () => {
-    const newButtonStatus = buttonStatus7 === 1 ? 0 : 1;
-    setButtonStatus7(newButtonStatus);
+  const handleButtonPress6 = () => {
+    const newButtonStatus = buttonStatus6 === 1 ? 0 : 1;
+    setButtonStatus6(newButtonStatus);
     // Update the data in Firebase
     set(child(dbRef, "Relay/relay6/status"), newButtonStatus)
       .then(() => {
@@ -210,14 +244,14 @@ function HomeScreen() {
         <Text>{buttonStatus5 === 1 ? "Bật" : "Tắt"} phun sương </Text>
       </Pressable>
       <Pressable
-        onPress={handleButtonPress6}
+        onPress={handleButtonPress7}
         style={[
           styles.button,
-          buttonStatus6 === 1 ? styles.buttonOn : styles.buttonOff,
+          buttonStatus7 === 1 ? styles.buttonOn : styles.buttonOff,
         ]}
       >
         <MaterialCommunityIcons name="robot-happy" size={40} color="black" />
-        <Text>{buttonStatus6 === 1 ? "Bật" : "Tắt"} Chế độ auto</Text>
+        <Text>{buttonStatus7 === 1 ? "Bật" : "Tắt"} Chế độ auto</Text>
       </Pressable>
       <View
         style={{
@@ -253,21 +287,21 @@ function HomeScreen() {
 
             <TouchableOpacity onPress={handlePress}>
               <View>
-                {isPlaying ? (
-                  <FontAwesome
-                    name="pause"
-                    size={24}
-                    color="#ffffff"
-                    onPress={handleButtonPress7}
-                  />
-                ) : (
-                  <FontAwesome
-                    name="play"
-                    size={24}
-                    color="#ffffff"
-                    onPress={handleButtonPress7}
-                  />
-                )}
+                <FontAwesome
+                  name="pause"
+                  size={24}
+                  color="#ffffff"
+                  onPress={handleButtonPress6}
+                  style={buttonStatus6 === 0 ? styles.btnactive : null}
+                />
+                <FontAwesome
+                  name="play"
+                  size={24}
+                  color="#ffffff"
+                  onPress={handleButtonPress6}
+                  style={buttonStatus6 === 1 ? styles.btnactive : null}
+
+                />
               </View>
             </TouchableOpacity>
             <Foundation name="next" size={24} color="#ffffff" />
@@ -322,5 +356,8 @@ const styles = StyleSheet.create({
   },
   animation: {
     transform: [{ rotate: "180deg" }],
+  },
+  btnactive: {
+    display: "none",
   },
 });
