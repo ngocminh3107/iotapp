@@ -84,7 +84,7 @@ export default function Information() {
         >
           <ImageBackground
             source={{
-              uri: "https://i.pinimg.com/564x/fb/51/a6/fb51a64b7e12d4ed3ff182d9249590e2.jpg",
+              uri: "https://img.freepik.com/free-photo/closeup-shot-thermometer-beach-sand_181624-12367.jpg?w=1380&t=st=1685545410~exp=1685546010~hmac=8f902cd81b4aa925bb565f3db732f34c56b7cdde1ad7a8c47ccbc079ee015fcc",
             }}
             style={{
               flex: 1,
@@ -104,8 +104,8 @@ export default function Information() {
                 height: 200,
               }}
             >
-              <Text style={{ color: "#ffffff", fontSize: 30, fontWeight: 900 }}>
-                Nhiệt độ
+              <Text style={{ color: "#000000", fontSize: 30, fontWeight: 900 }}>
+                NHIỆT ĐỘ
               </Text>
               <View
                 style={{
@@ -124,7 +124,7 @@ export default function Information() {
                 >
                   <Text
                     style={{
-                      color: Temp <= 35 ? "#09FF00" : "#FF3333",
+                      color: Temp <= 35 ? "#FF3333" : "#FF3333",
                       fontSize: 50,
                       fontWeight: 700,
                       marginTop: 10,
@@ -135,13 +135,13 @@ export default function Information() {
                   <MaterialCommunityIcons
                     name="temperature-celsius"
                     size={50}
-                    color={Temp <= 35 ? "#09FF00" : "#FF3333"}
+                    color={Temp <= 35 ? "#FF3333" : "#FF3333"}
                   />
                 </View>
                 <FontAwesome5
                   name="temperature-high"
                   size={80}
-                  color={Temp <= 35 ? "#09FF00" : "#FF3333"}
+                  color={Temp <= 35 ? "#FF3333" : "#FF3333"}
                 />
               </View>
               <View
@@ -162,7 +162,7 @@ export default function Information() {
                     height: 10,
                     width: 10,
                     borderRadius: 10,
-                    backgroundColor: Temp <= 35 ? "#09FF00" : "#FF3333",
+                    backgroundColor: Temp <= 35 ? "#FF3333" : "#FF3333",
                     marginRight: 5,
                     marginLeft: 5,
                   }}
@@ -171,17 +171,17 @@ export default function Information() {
                   style={{
                     fontSize: 20,
                     fontWeight: 700,
-                    color: Temp <= 35 ? "#09FF00" : "#FF3333",
+                    color: Temp <= 35 ? "#FF3333" : "#FF3333",
                   }}
                 >
-                  {Temp <= 35 ? "Nhiệt độ bình thường" : "Nhiệt độ quá cao"}
+                  {Temp > 32 ? "Nhiệt độ cao" : Temp < 29 ? "Nhiệt độ thấp" : "Nhiệt độ thường"}
                 </Text>
               </View>
             </View>
           </ImageBackground>
           <ImageBackground
             source={{
-              uri: "https://i.pinimg.com/564x/45/f8/62/45f862b88c3d13d52a223fcdb63e5249.jpg",
+              uri: "https://img.freepik.com/free-photo/water-drops-glass_1323-179.jpg?w=1380&t=st=1685545503~exp=1685546103~hmac=216de38fb347480c46f2658b0152c3e99eb711ea30d52fa33ae00df423ebad6a",
             }}
             style={{
               flex: 1,
@@ -201,8 +201,8 @@ export default function Information() {
                 height: 200,
               }}
             >
-              <Text style={{ color: "#ffffff", fontSize: 30, fontWeight: 900 }}>
-                Độ ẩm
+              <Text style={{ color: "#000000", fontSize: 30, fontWeight: 900 }}>
+                ĐỘ ẨM
               </Text>
               <View
                 style={{
@@ -221,7 +221,7 @@ export default function Information() {
                 >
                   <Text
                     style={{
-                      color: Humi <= 80 ? "#33CCFF" : "#FF3333",
+                      color: Humi <= 80 ? "#1265C7" : "#1265C7",
                       fontSize: 50,
                       fontWeight: 700,
                       marginTop: 10,
@@ -232,13 +232,13 @@ export default function Information() {
                   <FontAwesome
                     name="percent"
                     size={39}
-                    color={Humi <= 80 ? "#33CCFF" : "#FF3333"}
+                    color={Humi <= 80 ? "#1265C7" : "#1265C7"}
                   />
                 </View>
                 <MaterialCommunityIcons
                   name="air-humidifier"
                   size={80}
-                  color={Humi <= 80 ? "#33CCFF" : "#FF3333"}
+                  color={Humi <= 80 ? "#1265C7" : "#1265C7"}
                 />
               </View>
               <View
@@ -259,7 +259,7 @@ export default function Information() {
                     height: 10,
                     width: 10,
                     borderRadius: 10,
-                    backgroundColor: Humi <= 80 ? "#33CCFF" : "#FF3333",
+                    backgroundColor: Humi <= 80 ? "#1265C7" : "#1265C7",
                     marginRight: 5,
                     marginLeft: 5,
                   }}
@@ -268,17 +268,18 @@ export default function Information() {
                   style={{
                     fontSize: 20,
                     fontWeight: 700,
-                    color: Humi <= 80 ? "#33CCFF" : "#FF3333",
+                    color: Humi <= 80 ? "#1265C7" : "#1265C7",
                   }}
                 >
-                  {Humi <= 80 ? "Độ ẩm bình thường" : "độ ẩm quá cao"}
+                  {Humi > 85 ? "Độ ẩm cao" : Humi < 65 ? "Độ ẩm thấp" : "Độ ẩm thường"}
                 </Text>
               </View>
             </View>
           </ImageBackground>
-          <View
+          
+          <ImageBackground
             source={{
-              uri: "https://i.pinimg.com/564x/57/8f/54/578f54f7c67dade8bbb7a2bc5fc1c110.jpg",
+              uri: "https://img.freepik.com/free-photo/vibrant-pastel-sky_53876-94792.jpg?w=1380&t=st=1685547161~exp=1685547761~hmac=f9dbc585d3d3d7aae1950f9bfd20cfc4469588414957a39a9407512d266f26e3",
             }}
             style={{
               flex: 1,
@@ -299,7 +300,7 @@ export default function Information() {
               }}
             >
               <Text style={{ color: "#000000", fontSize: 30, fontWeight: 900 }}>
-                Ánh Sáng
+                ÁNH SÁNG
               </Text>
               <View
                 style={{
@@ -318,7 +319,7 @@ export default function Information() {
                 >
                   <Text
                     style={{
-                      color: Light <= 5 ? "#FFD700" : "#FF3333",
+                      color: Light <= 5 ? "#FFD700" : "#FFD700",
                       fontSize: 50,
                       fontWeight: 700,
                       marginTop: 10,
@@ -326,16 +327,16 @@ export default function Information() {
                   >
                     {Light}
                   </Text>
-                  <FontAwesome5
-                    name="fantasy-flight-games"
+                  <MaterialCommunityIcons
+                    name="car-light-dimmed"
                     size={50}
-                    color={Light <= 5 ? "#FFD700" : "#FF3333"}
+                    color={Light <= 5 ? "#FFD700" : "#FFD700"}
                   />
                 </View>
                 <Entypo
                   name="light-up"
                   size={80}
-                  color={Light <= 5 ? "#FFD700" : "#FF3333"}
+                  color={Light <= 5 ? "#FFD700" : "#FFD700"}
                 />
               </View>
               <View
@@ -356,7 +357,7 @@ export default function Information() {
                     height: 10,
                     width: 10,
                     borderRadius: 10,
-                    backgroundColor: Light <= 5 ? "#FFD700" : "#FF3333",
+                    backgroundColor: Light <= 5 ? "#FFD700" : "#FFD700",
                     marginRight: 5,
                     marginLeft: 5,
                   }}
@@ -365,14 +366,14 @@ export default function Information() {
                   style={{
                     fontSize: 20,
                     fontWeight: 700,
-                    color: Light <= 5 ? "#FFD700" : "#FF3333",
+                    color: Light <= 5 ? "#FFD700" : "#FFD700",
                   }}
                 >
-                  {Light <= 5 ? "Ánh sáng bình thường" : "Ánh sáng quá cao"}
+                  {Light > 0.2 ? "Cường độ ánh sáng cao" : "Cường độ ánh sáng bình thường"}
                 </Text>
               </View>
             </View>
-          </View>
+          </ImageBackground>
         </View>
 
         <View>

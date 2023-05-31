@@ -6,7 +6,7 @@ import {
   set,
   onValue,
   update,
-  off
+  off,
 } from "firebase/database";
 import { dataRef } from "./firebase";
 import {
@@ -176,7 +176,7 @@ function HomeScreen() {
   };
 
   const music = {
-    uri: "https://i.pinimg.com/564x/b1/bc/6d/b1bc6daf31d08ee2b77e1724143903da.jpg",
+    uri: "https://img.freepik.com/free-photo/vibrant-pastel-sky_53876-94792.jpg?w=1380&t=st=1685547161~exp=1685547761~hmac=f9dbc585d3d3d7aae1950f9bfd20cfc4469588414957a39a9407512d266f26e3",
   };
   return (
     <View style={styles.buttonContainer}>
@@ -189,7 +189,7 @@ function HomeScreen() {
         ]}
       >
         <Foundation name="lightbulb" size={40} color="black" />
-        <Text>{buttonStatus1 === 1 ? "Bật" : "Tắt"} Đèn sưởi ấm </Text>
+        <Text>{buttonStatus1 === 1 ? "" : ""} ĐÈN SƯỞI ẤM </Text>
       </Pressable>
 
       <Pressable
@@ -204,7 +204,7 @@ function HomeScreen() {
           size={40}
           color="black"
         />
-        <Text>{buttonStatus2 === 1 ? "Bật" : "Tắt"} đèn chống cú </Text>
+        <Text>{buttonStatus2 === 1 ? "" : ""} ĐÈN CHỐNG CÚ </Text>
       </Pressable>
       <Pressable
         onPress={handleButtonPress3}
@@ -219,7 +219,7 @@ function HomeScreen() {
           color={buttonStatus3 === 1 ? "white" : "black"}
           style={buttonStatus2 === 1 ? styles.animation : styles.animations}
         />
-        <Text>{buttonStatus3 === 1 ? "Bật" : "Tắt"} quạt </Text>
+        <Text>{buttonStatus3 === 1 ? "" : ""} QUẠT </Text>
       </Pressable>
 
       <Pressable
@@ -230,7 +230,7 @@ function HomeScreen() {
         ]}
       >
         <MaterialCommunityIcons name="pump" size={40} color="black" />
-        <Text>{buttonStatus4 === 1 ? "Bật" : "Tắt"} bơm </Text>
+        <Text>{buttonStatus4 === 1 ? "" : ""} BƠM </Text>
       </Pressable>
 
       <Pressable
@@ -241,7 +241,7 @@ function HomeScreen() {
         ]}
       >
         <Entypo name="water" size={40} color="black" />
-        <Text>{buttonStatus5 === 1 ? "Bật" : "Tắt"} phun sương </Text>
+        <Text>{buttonStatus5 === 1 ? "" : ""} PHUN SƯƠNG </Text>
       </Pressable>
       <Pressable
         onPress={handleButtonPress7}
@@ -251,7 +251,7 @@ function HomeScreen() {
         ]}
       >
         <MaterialCommunityIcons name="robot-happy" size={40} color="black" />
-        <Text>{buttonStatus7 === 1 ? "Bật" : "Tắt"} Chế độ auto</Text>
+        <Text>{buttonStatus7 === 1 ? "" : ""} CHẾ ĐỘ AUTO</Text>
       </Pressable>
       <View
         style={{
@@ -300,7 +300,6 @@ function HomeScreen() {
                   color="#ffffff"
                   onPress={handleButtonPress6}
                   style={buttonStatus6 === 1 ? styles.btnactive : null}
-
                 />
               </View>
             </TouchableOpacity>
@@ -317,11 +316,27 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Infomation" component={Information} />
-        <Tab.Screen name="History" component={History} />
-        <Tab.Screen name="Image" component={ImgScreenshort} />
+      <Tab.Navigator
+        screenOptions={{
+          //remover icon in tab navigation
+          tabBarIcon: () => null,
+          tabBarLabelStyle: {
+            fontSize: 16,
+            textAlign: 'center',
+            marginBottom: 10,
+          },
+          //style tabbar
+          tabBarStyle: {
+            
+            borderRadius: 20,
+            justifyContent: 'center',
+          },
+        }}
+
+      >
+        <Tab.Screen name="THIẾT BỊ" component={HomeScreen} />
+        <Tab.Screen name="THÔNG SỐ" component={Information} />
+        <Tab.Screen name="LỊCH SỬ" component={History} />
       </Tab.Navigator>
     </NavigationContainer>
   );
